@@ -5,10 +5,8 @@ module.exports = {
     fetchers: {
       remoteTarball: ({ defaultFetchers }) => {
         return async (cafs, resolution, opts) => {
-          // console.log('fetching', resolution.tarball)
-          const filesIndex = await fetchTarball(resolution['tarball'])
-          // console.log('done fetching', resolution.tarball)
-          return { filesIndex, local: true }
+          const filesIndex = await fetchTarball(resolution['tarball'], resolution['integrity'])
+          return { filesIndex }
         }
       }
     }
